@@ -15,20 +15,61 @@
 		height:100%;
 	}
 	
+	#wrap {
+		width:100%;
+		height:100%;
+		padding:5%;
+		position:relative;
+		box-sizing:border-box;
+	}
+	
 	#header {
 		width:100%;
-		padding:5%;
+	}
+	
+	.lbl {
+		display:inline-block;
+		width:20%;
+		line-height:30px;
 	}
 	
 	#cnt {
-		display:inline-block;
-		padding:5px 0;
+	    display: inline-block;
+	    box-sizing: border-box;
+	    width: 60%;
+	    height: 30px;
+	    padding-left:10px;
+	    border: none;
+	    border-bottom: 1px solid #555;
 	}
 	
 	.gBtn {
 		display:inline-block;
-		width:40px;
+		width:18%;
 		height:30px;
+		border:none;
+		background-color:#1E90FF;
+		color:#fff;
+		border-radius:5px;
+		font-weight:bold;
+	}
+	
+	.rBtn {
+		position:fixed;
+		right:5%;
+		bottom:5%;
+		border:none;
+		background-color:#FF69B4;
+		width:50px;
+		line-height:50px;
+		border-radius:25px;
+		color:#fff;
+		font-weight:bold;
+	}
+	
+	.row {
+		text-align:center;
+		margin:10px 0px;
 	}
 	
 	.num {
@@ -42,24 +83,23 @@
 		box-sizing:border-box;
 		border-radius:25px;
 	}
+	
 	.num:nth-of-type(1){background-color:#D35400;}
 	.num:nth-of-type(2){background-color:#F39C12;}
 	.num:nth-of-type(3){background-color:#F1C40F;}
 	.num:nth-of-type(4){background-color:#2ECC71;}
 	.num:nth-of-type(5){background-color:#0088d3;}
 	.num:nth-of-type(6){background-color:#8E44AD;}
-	.row {
-		
-	}
 </style>
 </head>
 <body>
-	<div id="header">
-		게임횟수 : <input type="text" id="cnt" value="1"/>
+	<div id="wrap">
+	<header id="header">
+		<label for="cnt" class="lbl">게임횟수</label><input type="text" id="cnt" value="1"/>
 		<input type="button" value="생성" onclick="generate()" class="gBtn"/>
-	</div>
-	<div id="contents">
-		
+	</header>
+	<div id="contents"></div>
+	<input type="button" value="초기화" onclick="reset()" class="rBtn"/>
 	</div>
 <script type="text/javascript">
 	var con = document.querySelector("#contents");
@@ -95,6 +135,10 @@
 		for(i = 0; i < round; i++) {
 			con.innerHTML += create();
 		}
+	}
+	
+	function reset() {
+		con.innerHTML = " ";
 	}
 </script>
 </body>
