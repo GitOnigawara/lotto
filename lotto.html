@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <style>
 	* {
@@ -13,7 +14,23 @@
 		width:100%;
 		height:100%;
 	}
-
+	
+	#header {
+		width:100%;
+		padding:5%;
+	}
+	
+	#cnt {
+		display:inline-block;
+		padding:5px 0;
+	}
+	
+	.gBtn {
+		display:inline-block;
+		width:40px;
+		height:30px;
+	}
+	
 	.num {
 		display:inline-block;
 		width:50px;
@@ -37,8 +54,10 @@
 </style>
 </head>
 <body>
-	게임횟수 : <input type="text" id="cnt" value="1"/>
-	<input type="button" value="생성" onclick="generate()"/>
+	<div id="header">
+		게임횟수 : <input type="text" id="cnt" value="1"/>
+		<input type="button" value="생성" onclick="generate()" class="gBtn"/>
+	</div>
 	<div id="contents">
 		
 	</div>
