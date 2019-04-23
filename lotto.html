@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	* {
+		margin:0;
+		padding:0;
+	}
+	
+	html, body {
+		width:100%;
+		height:100%;
+	}
+
+	.num {
+		display:inline-block;
+		width:50px;
+		text-align:center;
+		line-height:50px;
+		color:#fff;
+		font-weight:bold;
+		font-size:20px;
+		box-sizing:border-box;
+		border-radius:25px;
+	}
+	.num:nth-of-type(1){background-color:#D35400;}
+	.num:nth-of-type(2){background-color:#F39C12;}
+	.num:nth-of-type(3){background-color:#F1C40F;}
+	.num:nth-of-type(4){background-color:#2ECC71;}
+	.num:nth-of-type(5){background-color:#0088d3;}
+	.num:nth-of-type(6){background-color:#8E44AD;}
+	.row {
+		
+	}
+</style>
+</head>
+<body>
+	게임횟수 : <input type="text" id="cnt" value="1"/>
+	<input type="button" value="생성" onclick="generate()"/>
+	<div id="contents">
+		
+	</div>
+<script type="text/javascript">
+	var con = document.querySelector("#contents");
+	var cnt = document.querySelector("#cnt");
+	
+	function create() {
+		var result = "<p class='row'>";
+		var arr = [];
+		
+		for(i = 0; i < 6; i++) {
+			arr.push(Math.floor((Math.random() * 45) + 1));
+			for(j = 0; j < i; j++) {
+				if(arr[i] == arr[j]) {
+					arr[j] = Math.floor((Math.random() * 45) + 1);
+					j = 0;
+				}
+			}
+		}
+		
+		arr.sort(function(x, y){
+			return x - y;
+		});
+		
+		for(var i in arr) {
+			result += "<span class='num'>" + arr[i] + "</span>";
+		}
+		result += "</p>";
+		return result;
+	}
+	
+	function generate() {
+		var round = cnt.value;
+		for(i = 0; i < round; i++) {
+			con.innerHTML += create();
+		}
+	}
+</script>
+</body>
+</html>
